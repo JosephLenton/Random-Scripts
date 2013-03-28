@@ -30,6 +30,7 @@ r = WshShell.AppActivate( title )
 
 if r then
     WshShell.SendKeys "% "
+    WScript.Sleep 100
     WshShell.SendKeys "x"
 else
     WshShell.SendKeys "^{Esc}"
