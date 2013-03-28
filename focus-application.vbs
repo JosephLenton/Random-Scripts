@@ -25,7 +25,16 @@ dim WshShell, title
 title = WScript.Arguments(0)
 
 Set WshShell = WScript.CreateObject("WScript.Shell")
-WshShell.AppActivate title
-WshShell.SendKeys "% "
-WshShell.SendKeys "x"
+
+r = WshShell.AppActivate( title )
+
+if r then
+    WshShell.SendKeys "% "
+    WshShell.SendKeys "x"
+else
+    WshShell.SendKeys "^{Esc}"
+    WScript.Sleep 500
+    WshShell.SendKeys title
+    WshShell.SendKeys "{Enter}"
+end if
 
